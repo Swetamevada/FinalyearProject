@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- Mirrored from tympanus.net/Tutorials/LoginRegistrationForm/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Feb 2018 10:07:17 GMT -->
+<head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Registration Form </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="https://tympanus.net/Tutorials/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="{% static 'css1/demo.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css1/style.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css1/animate-custom.css' %}" />
+	<script type="text/javascript">
+		// Please don't use this code on your site
+  		var _gaq = _gaq || [];
+  		_gaq.push(['_setAccount', 'UA-7243260-2']);
+ 		_gaq.push(['_trackPageview']);
+
+  		(function() {
+    			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  		})();
+	</script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="http://tympanus.net/Tutorials/CSS3ContentNavigator/index.html#slide-main">
+                    <strong>&laquo; Previous Demo: </strong>Responsive Content Navigator
+                </a>
+                <span class="right">
+                    <a href="http://tympanus.net/codrops/2012/03/27/login-and-registration-form-with-html5-and-css3/">
+                        <strong>Back to the Codrops Article</strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+            <header>
+                <h1>ThirdEye Photography <span></span></h1>
+				           </header>
+            <section>
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+
+                    <div id="wrapper">
+
+
+
+                        <h1> PHOTOGRAPHER PROFILE</h1>
+                        {% for usr in user %}
+                                <p>
+                                    <label>Image</label>
+                                    <img src="{% static 'img/' %}{{usr.p_image}}" height="100" width="100"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u"> Username</label>
+                                    <input id="usernamesignup" READONLY name="p_name" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_name}}"/>
+                                </p>
+                                <p>
+                                    <label for="emailsignup" class="youmail" data-icon="e" > Email</label>
+                                    <input id="emailsignup" READONLY name="p_email" required="required" type="email" placeholder="mysupermail@mail.com" value="{{usr.p_email}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Contact</label>
+                                    <input id="usercontact"  READONLY name="p_contact" required="required" type="number" placeholder="mycontact" value="{{usr.p_contact}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Address</label>
+                                    <input id="useraddress" READONLY name="p_address" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_address}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Gender</label>
+                                    <input id="usergender" READONLY name="p_gender" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_gender}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Description</label>
+                                    <input id="usergender" READONLY name="p_desc" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_desc}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Amount</label>
+                                    <input id="useramount" READONLY name="p_amt" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_amt}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Area</label>
+                                    <input id="useramount" READONLY name="p_amt" required="required" type="text" placeholder="mysuperusername690" value="{{usr.area_id.area_name}}-{{usr.area_id.city_id.city_name}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Package</label>
+                                    <input id="useramount" READONLY name="p_amt" required="required" type="text" placeholder="mysuperusername690" value="{{usr.p_pk_id.p_pk_duration}}-{{usr.p_pk_id.p_pk_amount}}"/>
+                                </p>
+
+
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Famous Category</label>
+                                    <input id="useramount" READONLY name="p_amt" required="required" type="text" placeholder="mysuperusername690" value="{{usr.c_id.c_name}}"/>
+                                </p>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+<script src="{% static 'codrops/adpacks/demoad.js' %}"></script>
+    </body>
+
+<!-- Mirrored from tympanus.net/Tutorials/LoginRegistrationForm/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Feb 2018 10:07:26 GMT -->
+</html>

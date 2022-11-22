@@ -1,0 +1,60 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Gallery three columns grid</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- GALLERY START -->
+	<div id="gallery" class="m-tb80">
+		<div class="container">
+
+			<div class="isotope-filters">
+				<button data-filter="" class="active">All</button>
+				<button data-filter=".cat-1" >WEDDING </button>
+				<button data-filter=".cat-2">PARTY</button>
+				<button data-filter=".cat-3">ANNIVERSARY</button>
+				<button data-filter=".cat-4">DATE</button>
+			</div> <!-- /.portfolioFilter -->
+
+
+			<div class="isotope m-b50">
+				<div class="grid-item cat-1 cat-3">
+					<img src="{% static 'images/gallery/thumb2/01.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-2 cat-4">
+					<img src="{% static 'images/gallery/thumb2/02.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-1 cat-3 cat-4">
+					<img src="{% static 'images/gallery/thumb2/03.jpg' %}" alt="gallery">
+				</div>
+					<div class="grid-item cat-2">
+					<img src="{% static 'images/gallery/thumb2/04.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-1 cat-3">
+					<img src="{% static 'images/gallery/thumb2/06.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-2 cat-4">
+					<img src="{% static 'images/gallery/thumb2/05.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-1 cat-3">
+					<img src="{% static 'images/gallery/thumb2/07.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-2 cat-4">
+					<img src="{% static 'images/gallery/thumb2/08.jpg' %}" alt="gallery">
+				</div>
+				<div class="grid-item cat-1 cat-3 cat-4">
+					<img src="{% static 'images/gallery/thumb2/09.jpg' %}" alt="gallery">
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				<a href="#" class="btn-dark">VIEW MORE</a>
+			</div>
+
+		</div>
+	</div>
+	<!-- GALLERY END -->
+{% endblock %}

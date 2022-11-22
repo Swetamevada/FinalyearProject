@@ -1,0 +1,38 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Category</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- SERVICE START -->
+	<div id="service" class="service-section p-tb50">
+		<div class="container">
+			{% for ctg in ct %}
+			<div class="row">
+				<div class="col-md-7">
+					<div class="full-width p-tb70">
+						<img src="{% static 'img/' %}{{ctg.image_path}}" alt="service">
+					</div>
+				</div>
+				<div class="col-md-5">
+					<article class="service-single no-margin p-tb70 vetically-center">
+						<h4 class="section-title m-b30">SERVICE 02</h4>
+						<h2 class="section-sub-title m-b35"><span>{{ctg.c_name}}</span></h2>
+						<p class="m-b35">
+						{{ctg.c_desc}}
+                        </p>
+						<a href="/client/planpricing/{{ctg.c_id}}" class="read-more m-t40">GET PACKAGES</a>
+					</article> <!-- /.service-single -->
+				</div>
+			</div>
+            {% endfor %}
+
+		</div>
+	</div>
+	<!-- SERVICE END -->
+
+{% endblock %}

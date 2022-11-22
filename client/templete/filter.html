@@ -1,0 +1,73 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Filter</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- GALLERY START -->
+<!--	<div id="gallery" class="m-tb80">
+		<div class="container">
+            <div class="isotope m-b50">
+				{% for imags in g %}
+				<div class="grid-item cat-1 ">
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+						</div>
+					</div>
+
+					<h4><a href="/client/appfilter/{{imags.g_id}}" class="read-more pull-right"><button>FILTER</button> </a></h4>
+					</div>
+				{% endfor %}
+
+
+
+
+            </div> -->
+
+<div id="gallery" class="m-tb80">
+				<div class="container">
+					<div class="container">
+
+						<div class="container">
+							<div class="container">
+								<h3>Do you want add Filter on your Image ? Then Upload Your Image here.</h3><br><br>
+								<div class="container">
+									<div class="container">
+
+
+														<form action="/client/appfilters/" method="POST" enctype="multipart/form-data">
+													{% csrf_token %}
+													<span >{% for data in messages %}<p ><h2 style="color:red">* {{data}}</h2></p>{% endfor %}</span>
+													<img id="output" height="400/">
+													<br/><br>
+
+													<input type="file" name="image" accept="image/*" onchange="loadfile(event)" value="{{request.FILES.image}}"><br>
+
+																 <input type="submit" class="btn-dark" style="font-size:200%;height:50px;pedding-top:-10" value="ADD FILTER">
+															</form>
+													<script>
+														function loadfile(event){
+															document.getElementById('output').src = URL.createObjectURL(event.target.files[0]);
+
+														};
+													</script>
+
+								</div>
+							</div>
+            			</div>
+					</div>
+	</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- GALLERY END -->
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'photographerheader.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div class="panel-heading">
+     Feedback table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Description</th>
+            <th>date</th>
+            <th data-breakpoints="xs">User_id</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Photographer_id</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for fds in fd %}
+          <tr data-expanded="true">
+            <td>{{fds.f_id}}</td>
+            <td>{{fds.f_desc}}</td>
+            <td>{{fds.f_date}}</td>
+            <td>{{fds.user_id.user_name}}</td>
+            <td>{{fds.p_id.p_name}}</td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

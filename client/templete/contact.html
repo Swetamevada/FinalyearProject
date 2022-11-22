@@ -1,0 +1,72 @@
+{% extends 'clientheader.html' %}
+
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Contact us</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-12">
+					<div class="location rm-md-b80">
+						<div class="item">
+							<i class="fa fa-car"></i>
+							<h6>VISIT US</h6>
+							<p>
+								121 Rajhansh Residency, Film City Road, Mumbai, Maharastra.
+							</p>
+						</div><!-- /.end item -->
+						<div class="item">
+							<i class="fa fa-phone"></i>
+							<h6>CALL US</h6>
+							<p>
+								+917990312068
+							</p>
+						</div><!-- /.end item -->
+						<div class="item">
+							<i class="fa fa-envelope-o"></i>
+							<h6>EMAIL</h6>
+							<p>
+								swetamevada1999@email.com
+							</p>
+						</div><!-- /.end item -->
+					</div> <!-- /.location -->
+				</div>
+				<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+						<form action="/client/contactus/"  method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									<input type="text" required="" class="form-control" name="cn_name" id="name" placeholder="Name" value="{{cns.cn_name}}" >
+								</div>
+								<div class="col-sm-6">
+									<input type="email" required="" class="form-control" name="cn_email" id="email" placeholder="Your Email" value="{{cns.cn_email}}">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" required=""  class="form-control" minlength="10" name="cn_phone" id="phone" placeholder="Telephone" value="{{cns.cn_phone}}">
+								</div>
+							<textarea name="cn_desc" required=""  cols="10" rows="2" placeholder="Your Message" id="message" value="{{cns.cn_desc}}"></textarea>
+
+
+								<input type="submit" class="btn-dark" value="SEND INQUIRY"/>
+
+								</div>
+						</form>
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+	<div class="form-w3layouts">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12">
+			<!---728x90--->
+
+                    <section class="panel">
+                        <header class="panel-heading">
+                            category Forms
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                                <form role="form" method="post" enctype="multipart/form-data" action="/editcategory/{{ct.c_id}}">
+                                {% csrf_token %}
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control" name="c_name" placeholder="Enter name" value="{{ct.c_name}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Description</label>
+                                    <input type="text" class="form-control" name="c_desc" placeholder="Enter description" value="{{ct.c_desc}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Image</label>
+                                    <img id="output" height="100" src="{% static 'img/' %}{{ct.image_path}}">
+                                    <input type="file"  value="{{ct.image_path}}" class="form-control" name="image_path" id="image_path"
+                                           placeholder="image upload" accept="image/*" onchange="loadFile(event)">
+
+                                </div>
+                                    <script>
+                                        function loadFile(event){
+
+                                            document.getElementById('output').src = URL.createObjectURL(event.target.files[0]);
+                                        }
+                                    </script>
+
+
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </form>
+                            </div>
+
+                        </div>
+                    </section>
+
+            </div>
+
+ {% endblock %}

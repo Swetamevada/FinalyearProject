@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+	<div class="form-w3layouts">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12">
+			<!---728x90--->
+
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Area Forms
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                                <form role="form" method="post" action="/editarea/{{area.area_id}}">
+                                {% csrf_token %}
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control" name="area_name" placeholder="Enter name" value="{{area.area_name}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Pincode</label>
+                                    <input type="text" class="form-control" name="area_pincode" placeholder="Enter pincode" value="{{area.area_pincode}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">City</label>
+                                        <select name="city_id">
+                                            {% for entry in city %}
+                                                <option value="{{entry.city_id}}"{% if entry.city_id == area.city_id_id %}selected{% endif %}>{{entry.city_name}}</option>
+                                            {%endfor%}
+                                        </select>
+
+                                    </div>
+
+
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </form>
+                            </div>
+
+                        </div>
+                    </section>
+
+            </div>
+
+ {% endblock %}

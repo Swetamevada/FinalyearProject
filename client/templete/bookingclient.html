@@ -1,0 +1,87 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-12">
+					<div class="location rm-md-b80">
+						<div class="item">
+
+							<h4><u>Terms & Conditions</u></h4><br>
+							<p>
+								<ul>
+								<li>
+									You have to Book Your Photographer atleast one day ago.
+								</li><br>
+								<li>
+									You have Booked your photographer, and If you want to do cancel your Booking then you can,
+									but you have to cancel your Booking atleast one day ago.
+								</li><br>
+
+								<li>
+									You have Booked your photographer, and If you want to do modify your Booking then you can modify,
+									but you have to modify your Booking atleast one day ago.
+								</li><br>
+
+								<li>
+									you cancelled your Booking and you have done payment online, then we will detect 20% payment of your payment
+									and we will refund your remaining payment in next five days by online.
+								</li>
+						</ul>
+							</p>
+						</div><!-- /.end item -->
+					</div>
+				</div>
+						<!-- /.end item -->
+
+				<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+						<form action="/client/clientbooking/{{pid}}/{{amt}}"  method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+								DATE:	<input type="date" required="" style="background-color:#E6E6FA"  class="form-control" name="b_date" id="name" placeholder="Booking_date" value="{{bk.b_date}}" >
+								</div>
+
+								{% for ph in phs %}
+								{% if ph.p_id == pid %}
+								<div class="col-sm-6">
+									PHOTOGRAPHER:<input type="text" READONLY class="form-control" name="p_id" id="p_name" placeholder="Photographer" value="{{ph.p_name}}">
+								</div>
+								{%endif%}
+								{%endfor%}
+
+								<div class="col-sm-6">
+									AMOUNT:<input type="text" READONLY class="form-control" name="b_amount" id="email" placeholder="Booking_amount" value="{{amt}}">
+								</div>
+
+							<textarea name="b_desc" required="" style="background-color:#E6E6FA;" cols="10" rows="2" placeholder="Address of photography and category" id="message" value="{{bk.b_desc}}"></textarea>
+								<span style="color:red;font-size:250%" class="form-control">{% for data in messages %}<p>{{data}}</p>{% endfor %}</span><br>
+
+                                <input type="submit" class="btn-dark" value="BOOKING"/>
+
+							<p class="input-success">Yes it's done</p>
+							<p class="input-error">Oh's snape</p>
+                            </div>
+						</form>
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

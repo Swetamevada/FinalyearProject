@@ -1,0 +1,54 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+						<form action="/client/editbooking/{{bks.p_id_id}}/{{bks.b_amount}}/{{bks.b_id}}"  method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+								DATE:	<input type="date" required="" style="background-color:#E6E6FA"  class="form-control" name="b_date" id="name" placeholder="Booking_date" value="{{bks.b_date}}" >
+								</div>
+
+								<div class="col-sm-6">
+									PHOTOGRAPHER:<input type="text" READONLY class="form-control" name="p_id" id="p_name" placeholder="Photographer" value="{{bks.p_id.p_name}}">
+								</div>
+
+
+								<div class="col-sm-6">
+									AMOUNT:<input type="text" READONLY class="form-control" name="b_amount" id="email" placeholder="Booking_amount" value="{{bks.b_amount}}">
+								</div>
+
+                                <textarea type="text" name="b_desc" required="" style="background-color:#E6E6FA;" placeholder="Address of photography and category" id="message" value="{{bks.b_desc}}"></textarea>
+								<span style="color:red;font-size:250%" class="form-control">{% for data in messages %}<p>{{data}}</p>{% endfor %}</span><br>
+
+                                <input type="submit" class="btn-dark" value="EDIT"/>
+
+							<p class="input-success">Yes it's done</p>
+							<p class="input-error">Oh's snape</p>
+                            </div>
+						</form>
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends 'clientheader.html' %}
+
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+							<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+						<form action="/client/pkgeditbooking/{{bks.pk_id_id}}/{{bks.b_amount}}/{{bks.b_id}}"  method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									DATE:<input type="date" required="" style="background-color:#E6E6FA" class="form-control" name="b_date" id="name" placeholder="Booking_date" value="{{bks.b_date}}" >
+								</div>
+
+								<div class="col-sm-6">
+									AMOUNT:<input type="text" READONLY class="form-control" name="b_amount" id="email" placeholder="Booking_amount" value="{{bks.b_amount}}">
+								</div>
+
+								<div class="col-sm-6">
+									PACKAGE:<input type="text" READONLY class="form-control" name="pk_id" id="pk_name" placeholder="Photographer" value="{{bks.pk_id.pk_name}}">
+								</div>
+
+								<div class="col-sm-6">
+                                 SELECT PHOTOGRAPHER: <select name="p_id" style="width:100%; height:90%; background-color:#E6E6FA" class="form-control" required="">
+                                            <option hidden></option>
+                                            {% for entry in phs %}
+                                                <option value="{{entry.p_id}}"{% if entry.p_id == bks.p_id_id %}selected{% endif %}>{{entry.p_name}}</option>
+                                            {%endfor%}
+                                        </select>
+								</div>
+
+
+							<textarea style="background-color:#E6E6FA" required="" name="b_desc" cols="10" rows="2" placeholder="Booking_desc" id="message" value="{{bks.b_desc}}"></textarea>
+								<span style="color:red;font-size:250%" class="form-control">{% for data in messages %}<p>{{data}}</p>{% endfor %}</span>
+
+                                <input type="submit" class="btn-dark" value="EDIT"/>
+
+							<p class="input-success">Yes it's done</p>
+							<p class="input-error">Oh's snape</p>
+                            </div>
+						</form>
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

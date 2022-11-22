@@ -1,0 +1,209 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Gallery</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- GALLERY START -->
+	<div id="gallery" class="m-tb80">
+		<div class="container">
+			<div class="isotope-filters">
+				<button data-filter="" class="active">All</button>
+				<button data-filter=".cat-1" >WEDDING </button>
+				<button data-filter=".cat-2">FASHION</button>
+				<button data-filter=".cat-3">WILDLIFE</button>
+				<button data-filter=".cat-4">NATURE</button>
+				<button data-filter=".cat-5" >SPORTS</button>
+				<button data-filter=".cat-6">PRODUCT</button>
+				<button data-filter=".cat-7">TRAVEL</button>
+				<button data-filter=".cat-8">BABY</button>
+			</div> <!-- /.portfolioFilter -->
+			<div class="isotope m-b50">
+				{% for imags in g %}
+				<div class="grid-item cat-1 ">
+					{% if imags.c_id.c_name == "Wedding" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+                                    <h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+					{% endif %}
+				</div>
+				{% endfor %}
+				{% for imags in g %}
+				<div class="grid-item cat-2">
+					{% if imags.c_id.c_name == "Fashion" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+					{% endif %}
+				</div>
+				{% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-3">
+                    {% if imags.c_id.c_name == "Wildlife" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+                    {% endif %}
+				</div>
+                {% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-4">
+                    {% if imags.c_id.c_name == "Nature" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+                    {% endif %}
+				</div>
+                {% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-5 ">
+                    {% if imags.c_id.c_name == "Sports" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+                    {% endif %}
+				</div>
+                {% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-6">
+                    {% if imags.c_id.c_name == "Product" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+					{% endif %}
+				</div>
+                {% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-7">
+                    {% if imags.c_id.c_name == "Travel" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+                                </div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+                    {% endif %}
+				</div>
+                {% endfor %}
+                {% for imags in g %}
+				<div class="grid-item cat-8">
+                    {% if imags.c_id.c_name == "Baby" %}
+					<div class="gallery-single">
+						<div class="thumb">
+							<img src="{% static 'img/' %}{{imags.g_path}}" alt="gallery">
+							<a href="{% static 'img/' %}{{imags.g_path}}" class="image-large">
+								<div class="caption">
+									<h2 class="title">{{imags.c_id.c_name}} Photography.</h2>
+									<h2 class="title">By: {{imags.p_id.p_name}}</h2>
+								</div>
+							</a>
+						</div>
+					</div><!-- /.end item -->
+					{% for phs in ph %}
+					{% if imags.p_id_id == phs.p_id %}
+					<h4><a href="/client/services/{{imags.c_id_id}}" class="read-more pull-right">Booking</a></h4>
+					{% endif %}
+					{% endfor %}
+
+                    {% endif %}
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+	<!-- GALLERY END -->
+
+
+{% endblock %}

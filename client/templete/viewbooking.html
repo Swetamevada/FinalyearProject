@@ -1,0 +1,86 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>View Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- GALLERY START -->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr style="background-color:silver">
+            <th data-breakpoints="xs">Photographer</th>
+            <th>Booking_Date</th>
+            <th>Booking_Desc</th>
+            <th data-breakpoints="xs">Booking_Status</th>
+            <th data-breakpoints="xs">Booking_Amount</th>
+            <th data-breakpoints="xs">Payment_status</th>
+            <th data-breakpoints="xs">Package_Name</th>
+              <th data-breakpoints="xs">Action</th>
+             </tr>
+        </thead>
+        <tbody>
+        {% for bks in bk %}
+          <tr data-expanded="true">
+            <td>{{bks.p_id.p_name}}</td>
+            <td>{{bks.b_date}}</td>
+            <td>{{bks.b_desc | wordwrap:10 | linebreaksbr}}</td>
+            {% if  bks.b_status == '1' %}
+                  <td>Accepted</td>
+            {% elif bks.b_status == '2' %}
+                  <td>Rejected</td>
+              {% else %}
+                  <td>Request pending</td>
+            {% endif %}
+            <td>{{bks.b_amount}}</td>
+            {% if bks.payment_status == '1' %}
+                  <td>cash</td>
+              {% elif bks.payment_status == '2' %}
+                  <td>Online</td>
+            {% else %}
+                  <td>Pending..</td>
+            {% endif %}
+            <td>{{bks.pk_id.pk_name}}</td>
+              {% if bks.b_date <= dt %}
+                    <td>completed</td>
+              {% elif bks.pk_id != ""  %}
+              <td><a href="/client/cancelbooking/{{bks.b_id}}" onclick="return confirm ('Are you sure want to delete this Booking ?','cancel Booking');"><button class="btn btn-xs btn-danger"><i class="ace-icon fa fa-trash-o bigger-130"></i></button></a>
+                  <a href="/client/pkgupdatebooking/{{bks.b_id}}"><button class="btn btn-xs btn-info"><i class="ace-icon fa fa-pencil bigger-120"></i></button></a></td></td>
+              {% else %}
+              <td ><a href="/client/cancelbooking/{{bks.b_id}}" onclick="return confirm ('Are you sure want to delete this Booking ?');"><button class="btn btn-xs btn-danger"><i class="ace-icon fa fa-trash-o bigger-130"></i></button></a>
+                  <a href="/client/updatebooking/{{bks.b_id}}"><button class="btn btn-xs btn-info"><i class="ace-icon fa fa-pencil bigger-120"></i></button></a></td>
+              {% endif %}
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+
+	<!-- GALLERY END -->
+{% endblock %}

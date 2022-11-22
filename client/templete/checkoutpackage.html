@@ -1,0 +1,110 @@
+{% extends 'clientheader.html' %}
+
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+<div class="page-title" xmlns="http://www.w3.org/1999/html">
+		<h2>Your Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+							<div class="row">
+								<div class="col-sm-6">
+									DATE: <input type="date" READONLY class="form-control" name="date" id="name" placeholder="Booking_date" value="{{dt}}" >
+								</div>
+
+
+								<div class="col-sm-6">
+									PHOTOGRAPHER: <input type="text" READONLY class="form-control" name="phid" id="p_name" placeholder="Photographer" value="{{photo}}">
+								</div>
+
+
+								<div class="col-sm-6">
+									TOTAL AMOUNT: <input type="text" READONLY class="form-control" name="b_total" id="email" placeholder="Booking_amount" value="{{amnt}}">
+								</div>
+
+                                {% for pk in pkg %}
+                                {% if pk.pk_id == id %}
+                                <div class="col-sm-6">
+									PACKAGE: <input type="text" READONLY class="form-control" name="pkid" id="pkid" placeholder="Booking_date" value="{{pk.pk_name}}" >
+								</div>
+                                {% endif %}
+                                {% endfor %}
+
+                                   <textarea name="bdesc" READONLY style="background-color:#E6E6FA"cols="10" rows="2" placeholder="Address of photography and category" id="message" value="{{desc}}">{{desc}}</textarea>
+                                </div>
+						<u><h4>Payment By :</h4></u><br>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                         <h4 class="panel-title">
+										<a href="/client/cash/{{bid}}">Cash Payment </a>
+
+                                </h4>
+                                </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    PayPal
+                    </a>
+                    </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                    <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+                            <input type="hidden" name="business" value="swetamevada1999@gmail.com">
+
+                            <!-- Specify a Buy Now button. -->
+                            <input type="hidden" name="cmd" value="_xclick">
+
+                            <!-- Specify details about the item that buyers will purchase. -->
+                            <input type="hidden" name="item_name" value="{{request.session.username}}">
+
+                            <input type="hidden" name="amount" value="{{amnt}}">
+
+                              <input type="hidden" name="currency_code" value="INR">
+
+                            <!-- Specify URLs -->
+                            <input type='hidden' name='cancel_return' value='http://127.0.0.1:8000/client/failure'>
+
+                            <input type='hidden' name='return' value='http://127.0.0.1:8000/client/success/{{bid}}'>
+
+                            <!-- Display the payment button. -->
+                            <input type="image" name="submit" border="0"
+                            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
+                            <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+                        </form>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+							<p class="input-success">Yes it's done</p>
+							<p class="input-error">Oh's snape</p>
+
+
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

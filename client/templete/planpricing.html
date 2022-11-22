@@ -1,0 +1,46 @@
+{% extends 'clientheader.html' %}
+
+{% block content %}
+<div id="pricing" class="pricing-section m-tb120">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-header m-b60">
+						<h2 class="title">Plan Pricing</h2>
+						<p class="sub-title">
+							Appropriately engage strategic communities rather than enterprise-wide supply chains. Completely impact distinctive testing procedures without front-end interfaces.
+						</p>
+					</div>
+				</div>
+				<!-- price table start here -->
+				{% for pkgs in pkg %}
+				<div class="col-md-4 nopadding">
+					<div class="price-table price-bg-1">
+						<div class="overlay">
+							<div class="header">
+								<span class="plan-name">{{pkgs.pk_name}}</span>
+								<h2 class="price">{{pkgs.pk_amount}} <i class="fa fa-rupee"></i></h2>
+							</div>
+							<ul class="list">
+								<li>{{pkgs.pk_desc | wordwrap:40 | linebreaksbr}}</li>
+								<li>{{pkgs.c_id.c_name}}</li>
+
+							</ul><br><br><br>
+
+
+
+							<div class="col-md-12 text-center">
+								<form action="/client/bookingpackage/{{pkgs.pk_id}}/{{pkgs.pk_amount}}" method="post">
+								{% csrf_token %}
+									<input type="submit" class="btn-dark" value="BOOKING"/>
+								</form>
+							</div>
+						</div>
+					</div><!-- /.price-table -->
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

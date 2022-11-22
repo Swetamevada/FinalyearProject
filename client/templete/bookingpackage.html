@@ -1,0 +1,95 @@
+{% extends 'clientheader.html' %}
+
+{% block content %}
+
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Booking</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- CONTACT START -->
+	<div id="contact" class="m-tb80">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-12">
+					<div class="location rm-md-b80">
+						<div class="item">
+							<h4><u>Terms & Conditions</u></h4><br>
+							<p>
+								<ul>
+								<li>
+									You have to Book Your Photographer atleast one day ago.
+								</li><br>
+								<li>
+									You have Booked your photographer, and If you want to do cancel your Booking then you can,
+									but you have to cancel your Booking atleast one day ago.
+								</li><br>
+
+								<li>
+									You have Booked your photographer, and If you want to do modify your Booking then you can modify,
+									but you have to modify your Booking atleast one day ago.
+								</li><br>
+
+								<li>
+									you cancelled your Booking and you have done payment online, then we will detect 20% payment of your payment
+									and we will refund your remaining payment in next five days by online.
+								</li>
+						</ul>
+							</p>
+						</div><!-- /.end item -->
+					</div> <!-- /.location -->
+				</div>
+				<div class="col-md-7 col-md-offset-2 col-sm-12">
+					<div class="contact-form">
+						<form action="/client/bookingpackage/{{id}}/{{amt}}"  method="post">t
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-6">
+									DATE:<input type="date" required="" style="background-color:#E6E6FA" class="form-control" name="b_date" id="name" placeholder="Booking_date" value="{{bk.b_date}}" >
+								</div>
+
+								<div class="col-sm-6">
+									AMOUNT:<input type="text" READONLY class="form-control" name="b_amount" id="email" placeholder="Booking_amount" value="{{amt}}">
+								</div>
+
+                                {% for pk in pkg %}
+								{% if pk.pk_id == id %}
+								<div class="col-sm-6">
+									PACKAGE:<input type="text" READONLY class="form-control" name="pk_id" id="pk_name" placeholder="Photographer" value="{{pk.pk_name}}">
+								</div>
+								{%endif%}
+								{%endfor%}
+
+
+								<div class="col-sm-6">
+                                 SELECT PHOTOGRAPHER: <select name="p_id" style="width:100%; height:90%; background-color:#E6E6FA" class="form-control" required="">
+                                            <option hidden></option>
+                                            {% for entry in phs %}
+                                                <option value="{{entry.p_id}}">{{entry.p_name}}</option>
+                                            {%endfor%}
+                                        </select>
+								</div>
+
+
+							<textarea style="background-color:#E6E6FA" required="" name="b_desc" cols="10" rows="2" placeholder="Booking_Address" id="message" value="{{bk.b_desc}}"></textarea>
+								<span style="color:red;font-size:250%" class="form-control">{% for data in messages %}<p>{{data}}</p>{% endfor %}</span>
+
+                                <input type="submit" class="btn-dark" value="BOOKING"/>
+
+							<p class="input-success">Yes it's done</p>
+							<p class="input-error">Oh's snape</p>
+                            </div>
+						</form>
+					</div> <!-- /.contact-form -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CONTACT END -->
+
+	<!-- MAP START -->
+	<div class="map"></div>
+	<!-- MAP END -->
+{% endblock %}
+

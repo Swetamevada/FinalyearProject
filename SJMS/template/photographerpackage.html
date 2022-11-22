@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+<td><a href="/p_packageinsert">INSERT DATA</a></td>
+    <div class="panel-heading">
+        Photographer package table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th data-breakpoints="xs">Amount</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Duration</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for pks in ppk %}
+          <tr data-expanded="true">
+            <td>{{pks.p_pk_id}}</td>
+            <td>{{pks.p_pk_name}}</td>
+            <td>{{pks.p_pk_desc}}</td>
+            <td>{{pks.p_pk_amount}}</td>
+            <td>{{pks.p_pk_duration}}</td>
+              <td><a href="/p_packagedelete/{{pks.p_pk_id}}">DELETE</a></td>
+              <td><a href="/p_packageupdate/{{pks.p_pk_id}}">EDIT</a></td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

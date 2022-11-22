@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+<td><a href="/categoryinsert">INSERT DATA</a></td>
+    <div class="panel-heading">
+     Category table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+            <th>Description</th>
+              <th>Image</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for ct in category %}
+          <tr data-expanded="true">
+            <td>{{ct.c_id}}</td>
+            <td>{{ct.c_name}}</td>
+            <td>{{ct.c_desc}}</td>
+              <td><img src="{% static 'img/' %}{{ct.image_path}}" height="100" width="100"/></td>
+              <td><a href="/categorydelete/{{ct.c_id}}">DELETE</a></td>
+            <td><a href="/categoryupdate/{{ct.c_id}}">EDIT</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

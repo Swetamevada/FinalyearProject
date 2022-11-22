@@ -1,0 +1,59 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div class="panel-heading">
+     User table
+    </div>
+    <div>
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th data-breakpoints="xs">Password</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Area Id</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Is_admin</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+          <tr data-expanded="true">
+            <td>{{user.user_id}}</td>
+            <td>{{user.user_name}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.contact}}</td>
+            <td>{{user.address}}</td>
+            <td>{{user.user_gender}}</td>
+            <td>{{user.area_id.area_name}}</td>
+            <td>{{user.is_admin}}</td>
+          </tr>
+        {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

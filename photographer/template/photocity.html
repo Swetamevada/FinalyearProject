@@ -1,0 +1,47 @@
+{% extends 'photographerheader.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+    <div class="panel-heading">
+     City table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for citys in city %}
+          <tr data-expanded="true">
+            <td>{{citys.city_id}}</td>
+            <td>{{citys.city_name}}</td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

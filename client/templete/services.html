@@ -1,0 +1,53 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>Photographers</h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- SERVICE START -->
+	<div id="service" class="service-section p-tb50">
+		<div class="container">
+
+			{% for phg in ph %}
+			<div class="row">
+				<div class="col-md-5">
+					<article class="service-single no-margin p-tb70">
+						<h4 class="section-title m-b30">SERVICE</h4>
+						<h2 class="section-sub-title m-b35"> <span>{{phg.p_name}}</span></h2>
+						<p class="m-b35">
+							{{phg.p_desc}}
+						</p>
+						<h4 ><i class="fa fa-phone"></i> : {{phg.p_contact}}</h4><br>
+						<h4 ><i class="fa fa-envelope"></i> : {{phg.p_email}}</h4><br>
+						<h4 ><i class="fa fa-home"></i> : {{phg.p_address}}</h4><br>
+						<h4 ><i class="fa fa-area-chart"></i> : {{phg.area_id.area_name}}</h4><br>
+						<h4><i class="fa fa-rupee"></i> : {{phg.p_amt}}<i class="fa fa-rupee fa-1x">/per day.</i> </h4><br>
+						<h4 ><i class="fa fa-list-alt"></i> : {{phg.c_id.c_name}} photography.</h4><br>
+						<button style="background-color:silver; width:100%"><a href="/client/clientbooking/{{phg.p_id}}/{{phg.p_amt}}" class="read-more m-t40">GET SERVICE</a></button>
+						<br><br><br>
+						<form method="post" action="/client/feedback/{{phg.p_id}}" autocomplete="on">
+							{% csrf_token %}
+						<textarea required="required" class="section-title m-b30" style="width:80%" name="f_desc" placeholder="Add Your Feedback" value="{{fds.f_desc}}"></textarea>
+
+
+						<input type="submit" style="width:15%; background-color:#E6E6FA"  class="btn-submit pull-right"  value="ADD"/>
+						</form>
+						<u><a href="/client/viewfeedback/{{phg.p_id}}" style="font-size:150%;color:black" ><u>View Reviews</u></a>
+					</article> <!-- /.service-single -->
+				</div>
+				<div class="col-md-7">
+					<div class="full-width p-tb70">
+						<img src="{% static 'img/' %}{{phg.p_image}}" alt="service">
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- SERVICE END -->
+
+{% endblock %}

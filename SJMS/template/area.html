@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+<td><a href="/areainsert">INSERT DATA</a></td>
+    <div class="panel-heading">
+     Area table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+            <th>pincode</th>
+            <th data-breakpoints="xs">City_id</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for areas in area %}
+          <tr data-expanded="true">
+            <td>{{areas.area_id}}</td>
+            <td>{{areas.area_name}}</td>
+            <td>{{areas.area_pincode}}</td>
+            <td>{{areas.city_id.city_name}}</td>
+              <td><a href="/areadelete/{{areas.area_id}}">DELETE</a></td>
+            <td><a href="/areaupdate/{{areas.area_id}}">EDIT</a></td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

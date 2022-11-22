@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<!-- Mirrored from codepassenger.com/html/jina/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Feb 2018 07:04:35 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Third Eye - Celebration Organizing Agency HTML5 Template</title>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'css1/owl.carousel.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="{% static 'css1/font-awesome.min.css' %}">
+
+
+	<!-- Revolution slider -->
+	<link href="{% static 'assets/revolution/css/settings.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'assets/revolution/css/layers.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'assets/revolution/css/navigation.css' %}" rel="stylesheet" type="text/css">
+
+
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="{% static 'css1/main.css' %}">
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPlayfair+Display:400,400i,700,700i" rel="stylesheet">
+
+	<!-- Favicon -->
+	<link rel="icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
+	<script src="{% static 'assets/js/respond.min.js' %}"></script>
+	<![endif]-->
+</head>
+<body>
+	<!-- HEADER START -->
+	<header id="header" class="header res-padd-lr90">
+		<div class="logo m-tb50">
+			<a href="index-2.html" class="">
+				<img src="{% static 'images/pcs3.jpg' %}" alt="logo">
+			</a>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 col-sm-12">
+					<div class="social-icons">
+						<a href="#"><i class=""></i></a>
+						<a href="/client/userprofile/"><i class="fa fa-user fa-2x"></i></a>
+
+					</div>
+				</div>
+				<div class="col-md-8 col-sm-12">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						    <span class="sr-only">Toggle navigation</span>
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span>
+						  </button>
+						 <a class="navbar-brand" href="index-2.html">Menu</a>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+							    <li class="active"><a href="/client/home/">HOME</a></li>
+
+							    <li  class="has-sub-menu"><a href="#">SERVICES</a>
+									<ul class="sub-menu">
+										<li class="has-sub-menu"><a href="/client/services/">PHOTOGRAPHER</a></li>
+										<li><a href="/client/planpricing/">PLAN PRICING</a></li>
+										<li><a href="/client/photosgallery/">GALLERY</a></li>
+										<li><a href="/client/addfilter/">FILTER</a></li>
+									</ul>
+							    </li>
+
+							    <li class="has-sub-menu"><a href="#">CATEGORY</a>
+									<ul class="sub-menu">
+										{% for cts in ct %}
+										<li><a href="/client/planpricing/{{cts.c_id}}">{{cts.c_name}}</a></li>
+										{% endfor %}
+									</ul>
+							    </li>
+
+								<li class="has-sub-menu"><a href="#">PROFILE</a>
+									<ul class="sub-menu">
+										<li><a href="/client/clogin/">USER LOGIN / REGISTRATION</a></li>
+										<li><a href="/photographer/photologin/">PHOTOGRAPHER LOGIN / REGISTRATION</a></li>
+										<li><a href="/client/updateprofile/">EDIT PROFILE</a></li>
+										<li><a href="/client/clogout/">LOG OUT</a></li>
+							    	</ul>
+							    </li>
+
+								<li><a href="/client/contactus/">CONTACT</a></li>
+
+								<li><a href="/client/viewbooking/">VIEWBOOKING</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</nav>
+				</div>
+				<div class="col-md-2  col-sm-12">
+					<form id="search-form" action="/client/search/" method="get">
+						{% csrf_token %}
+		                <div id="input"><input type="text" name="search" id="search-terms" placeholder="Enter search terms..." value="{{request.GET.search}}"></div>
+		            	<div id="label"><label for="search-terms" id="search-label"></label></div>
+		            </form>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- HEADER END -->
+     {% block content %}
+
+    {% endblock %}
+
+	<!-- FOOTER START -->
+	<footer id="footer" class="footer-section p-tb10050">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="widget widget_about">
+						<div class="widget-logo">
+							<img src="{% static 'images/swe2.png' %}" alt="footer">
+						</div>
+						<p>
+							Energistically aggregate cross-unit products through open-source growth strategies. Interactively scale scalable applications after functional relationships. Collaboratively e-enable superior results after interoperable methodologies.
+						</p>
+
+					</div> <!-- /.widget_about -->
+				</div>
+				<div class="col-md-4">
+					<div class="widget widget_contact">
+						<h2 class="widget-title">Contact</h2>
+						<ul class="list-unstyled">
+							<li>
+								<div class="media-left">
+									<i class="fa fa-map-marker"></i>
+								</div>
+								<div class="media-body">
+									121 Rajhansh Residency, Film City Road, Mumbai, Maharastra.
+								</div>
+							</li>
+							<li>
+								<div class="media-left">
+									<i class="fa fa-phone"></i>
+								</div>
+								<div class="media-body">
+									+917990312068
+								</div>
+							</li>
+							<li>
+								<div class="media-left">
+									<i class="fa fa-send"></i>
+								</div>
+								<div class="media-body">
+									<a href="mailto:info@Example.com"  target="_top">
+									swetamevada1999@gmail.com
+									</a>
+								</div>
+							</li>
+
+						</ul>
+					</div> <!-- /.widget_contact -->
+				</div>
+				<div class="col-md-4">
+					<div class="widget widget_recent_entries">
+						<h2 class="widget-title">About Us</h2>
+						<ul>
+							<li>
+								<span>We have provided different types of photographers. And also provided different category abour photography.</span>
+							</li>
+							<li>
+								<span>Photographer have to registration and pay charges. Photographer add their photos.</span>
+							</li>
+							<li>
+								<span>User can book any photographer and also can book ant packages. </span>
+							</li>
+						</ul>
+					</div> <!-- /.widget_recent_entries -->
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- FOOTER END -->
+
+	<!-- js files -->
+	<script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+	<script src="{% static 'js/swiper.min.js' %}"></script>
+	<script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+	<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+
+	<!-- REVOLUTION JS FILES -->
+	<script src="{% static 'assets/revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+	<script src="{% static 'assets/revolution/js/jquery.themepunch.revolution.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'assets/revolution/js/extensions/revolution.extension.carousel.min.js' %}"></script>
+
+
+	<!-- custom js -->
+	<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+
+<!-- Mirrored from codepassenger.com/html/jina/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Feb 2018 07:06:56 GMT -->
+</html>

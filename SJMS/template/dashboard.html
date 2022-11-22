@@ -1,0 +1,120 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<!-- //market-->
+		<div class="market-updates">
+			<div class="col-md-3 market-update-gd">
+				<div class="market-update-block clr-block-2">
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-eye"> </i>
+					</div>
+					 <div class="col-md-8 market-update-left">
+					 <h4>Feedback</h4>
+					<h3>{{feed}}</h3>
+				  </div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-3 market-update-gd">
+				<div class="market-update-block clr-block-1">
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-users" ></i>
+					</div>
+					<div class="col-md-8 market-update-left">
+					<h4>Users</h4>
+						<h3>{{user}}</h3>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-3 market-update-gd">
+				<div class="market-update-block clr-block-3">
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-usd"></i>
+					</div>
+					<div class="col-md-8 market-update-left">
+						<h4>Packages</h4>
+						<h3>{{pack}}</h3>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-3 market-update-gd">
+				<div class="market-update-block clr-block-4">
+					<div class="col-md-4 market-update-right">
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					</div>
+					<div class="col-md-8 market-update-left">
+						<h4>Booking</h4>
+						<h3>{{bks}}</h3>
+
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+		   <div class="clearfix"> </div>
+		</div>
+		<!-- //market-->
+		<!---728x90--->
+        <div class="panel-heading">
+     Booking table
+    </div>
+         <div class="panel panel-default">
+
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Booking_status</th>
+            <th>Amount</th>
+            <th>Payment_status</th>
+            <th data-breakpoints="xs">Package_id</th>
+            <th data-breakpoints="xs">User</th>
+            <th data-breakpoints="xs">Photographer</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for bk in booking %}
+          <tr data-expanded="true">
+            <td>{{bk.b_id}}</td>
+            <td>{{bk.b_date}}</td>
+            <td>{{bk.b_desc | wordwrap:40 | linebreaksbr}}</td>
+            <td>{{bk.b_status}}</td>
+            <td>{{bk.b_amount}}</td>
+            <td>{{bk.payment_status}}</td>
+            <td>{{bk.pk_id.pk_name}}</td>
+            <td>{{bk.user_id.user_name}}</td>
+            <td>{{bk.p_id.p_name}}</td>
+               </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+ </div>
+		<!---728x90--->
+		<!-- //calendar -->
+		<!---728x90--->
+			<!-- tasks -->
+
+		<!-- //tasks -->
+
+{% endblock %}

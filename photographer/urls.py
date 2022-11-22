@@ -1,0 +1,35 @@
+from django.contrib import admin
+from django.urls import path, include
+from photographer import photographer_views
+
+urlpatterns = [
+    path('photodashboard/', photographer_views.photodashboard),
+    path('photohome/', photographer_views.photohome),
+    path('photologin/', photographer_views.photologin),
+    path('photosbooking/', photographer_views.photosbooking),
+    path('acceptbooking/<int:id>', photographer_views.acceptbooking),
+    path('rejectbooking/<int:id>', photographer_views.rejectbooking),
+    path('usertable/', photographer_views.photoviewuser),
+    path('areatable/', photographer_views.photoviewarea),
+    path('citytable/', photographer_views.photoviewcity),
+    path('contacttable/', photographer_views.photoviewcontact),
+    path('feedbacktable/', photographer_views.photoviewfeedback),
+    path('photographertable/', photographer_views.photoviewphotographer),
+    path('p_packagetable/', photographer_views.photoviewp_package),
+    path('categorytable/', photographer_views.photoviewcategory),
+    path('imgtable/', photographer_views.photoviewimg),
+    path('packagetable/', photographer_views.photoviewpackage),
+    path('packagetable/', photographer_views.photoviewpackage),
+    path('photosimginsert/', photographer_views.photosimginsert),
+    path('photogallery', photographer_views.photosimginsert),
+    path('photoimgdelete/<int:id>', photographer_views.photoimgdelete),
+    path('imgupdate/<int:id>', photographer_views.photoimgupdate),
+    path('editimg/<int:id>', photographer_views.photoeditimg),
+    path('photographerupdate/', photographer_views.photographerupdate),
+    path('editphotographer/<int:id>', photographer_views.editphotographer),
+    path('photoforgot/', photographer_views.photoforgot),
+    path('photosendotp/', photographer_views.photosendemail),
+    path('photoreset/', photographer_views.photoset_password),
+    path('photologout/', photographer_views.photologout),
+    path('profilephoto/', photographer_views.profilephoto),
+]

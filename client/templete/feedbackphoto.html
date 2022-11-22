@@ -1,0 +1,58 @@
+{% extends 'clientheader.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<!-- PAGE TITLE START -->
+	<div class="page-title">
+		<h2>View Reviews </h2>
+	</div>
+	<!-- PAGE TITLE END -->
+
+	<!-- GALLERY START -->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr style="background-color:silver" >
+            <th data-breakpoints="xs">Feedback_Date</th>
+            <th>Feedback_Desc</th>
+             <th data-breakpoints="xs">From_User</th>
+            <th>To_Photographer</th>
+             </tr>
+        </thead>
+        <tbody>
+        {% for fb in fds %}
+          <tr data-expanded="true" style="background-color:offwhite">
+            <td>{{fb.f_date}}</td>
+            <td>{{fb.f_desc | wordwrap:10 | linebreaksbr}}</td>
+            <td>{{fb.user_id.user_name}}</td>
+            <td>{{fb.p_id.p_name}}</td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+
+	<!-- GALLERY END -->
+{% endblock %}

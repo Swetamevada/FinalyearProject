@@ -1,0 +1,54 @@
+{% extends 'photographerheader.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+<td><a href="/photographer/photosimginsert">INSERT DATA</a></td>
+    <div class="panel-heading">
+     Gallery table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+              <th>Image</th>
+              <th>Category</th>
+              <th>Photographer</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for imgs in img %}
+          <tr data-expanded="true">
+            <td>{{imgs.g_id}}</td>
+            <td><img src="{% static 'img/' %}{{imgs.g_path}}" height="100" width="100"/></td>
+            <td>{{imgs.c_id.c_name}}</td>
+             <td>{{imgs.p_id.p_name}}</td>
+              <td><a href="/photographer/photoimgdelete/{{imgs.g_id}}">DELETE</a></td>
+            <td><a href="/imgupdate/{{imgs.g_id}}">EDIT</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<!-- Mirrored from tympanus.net/Tutorials/LoginRegistrationForm/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Feb 2018 10:07:17 GMT -->
+<head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Registration Form </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="https://tympanus.net/Tutorials/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="{% static 'css1/demo.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css1/style.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css1/animate-custom.css' %}" />
+	<script type="text/javascript">
+		// Please don't use this code on your site
+  		var _gaq = _gaq || [];
+  		_gaq.push(['_setAccount', 'UA-7243260-2']);
+ 		_gaq.push(['_trackPageview']);
+
+  		(function() {
+    			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  		})();
+	</script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="http://tympanus.net/Tutorials/CSS3ContentNavigator/index.html#slide-main">
+                    <strong>&laquo; Previous Demo: </strong>Responsive Content Navigator
+                </a>
+                <span class="right">
+                    <a href="http://tympanus.net/codrops/2012/03/27/login-and-registration-form-with-html5-and-css3/">
+                        <strong>Back to the Codrops Article</strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+            <header>
+                <h1>THIRDEYE PHOTOGRAPHY <span></span></h1>
+				           </header>
+            <section>
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+
+                    <div id="wrapper">
+                        <form  action="/client/pregistration/" enctype="multipart/form-data" autocomplete="on" method="post">
+                                {% csrf_token %}
+
+                        <h1>PHOTOGRAPHER PROFILE </h1>
+                             <p>
+                                    <label>Image</label>
+                                        <img id="output" height="100" src="{% static 'img/' %}{{photos.p_image}}">
+                                    <input type="file" class="form-control" name="p_image" id="p_image" value="{{photos.p_image}}"
+                                           placeholder="image upload" accept="image/*" onchange="loadFile(event)">
+                                </p>
+
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                                    <input id="usernamesignup" name="p_name" required="required" type="text" placeholder="mysuperusername690" value="{{photos.p_name}}"/>
+                                </p>
+                                <p>
+                                    <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+                                    <input id="emailsignup" name="p_email" required="required" type="email" placeholder="mysupermail@mail.com" value="{{photos.p_email}}"/>
+                                </p>
+                                <p>
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                                    <input id="passwordsignup" name="p_password" required="required" type="password" placeholder="eg. X8df!90EO" value="{{photos.p_password}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your contact</label>
+                                    <input id="usercontact" name="p_contact" required="required" type="number" placeholder="mycontact" value="{{photos.p_contact}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your Address</label>
+                                    <input id="useraddress" name="p_address" required="required" type="text" placeholder="mysuperusername690" value="{{photos.p_address}}"/>
+                                </p>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your Gender</label>
+                                    <input id="usergender" name="p_gender" required="required" type="text" placeholder="mysuperusername690" value="{{photos.p_gender}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your Description</label>
+                                    <input id="useramount" name="p_desc" required="required" type="text" placeholder="mysuperusername690" value="{{photos.p_desc}}"/>
+                                </p>
+
+                                 <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your Amount</label>
+                                    <input id="useramount" name="p_amt" required="required" type="text" placeholder="mysuperusername690" value="{{photos.p_amt}}"/>
+                                </p>
+
+                                <p>
+                                    <label for="usernamesignup" class="uname" >Your Famous Photography.</label><br>
+                                    <select style="font-size:120%; width:40%;" class="uname" name="c_id">
+                                            {% for entrys in cat %}
+                                                <option value="{{entrys.c_id}}"{% if entrys.c_id == photographer.c_id_id %}selected{% endif %}>{{entrys.c_name}}</option>
+                                            {%endfor%}
+                                    </select>
+                                 </p>
+
+
+                                <p>
+                                    <label  for="usernamesignup" class="uname" >Your Areaname</label><br>
+                                    <select style="font-size:120%; width:40%;" class="uname" name="area_id">
+                                            {% for entrys in area %}
+                                                <option value="{{entrys.area_id}}">{{entrys.area_name}}-{{entrys.city_id.city_name}}</option>
+                                            {%endfor%}
+                                    </select>
+                                 </p>
+
+                                 <p>
+                                    <label for="usernamesignup" class="uname" >Your package</label><br>
+                                    <select style="font-size:120%; width:40%;" class="uname" name="p_pk_id">
+                                            {% for entrys in pkg %}
+                                                <option value="{{entrys.p_pk_id}}">{{entrys.p_pk_duration}}-{{entrys.p_pk_amount}}</option>
+                                            {%endfor%}
+                                    </select>
+                                 </p>
+
+
+
+                                <script>
+                                        function loadFile(event){
+
+                                            document.getElementById('output').src = URL.createObjectURL(event.target.files[0]);
+                                        }
+                                </script>
+
+
+                                <p class="signin button">
+									<input type="submit" value="Sign up"/>
+								</p>
+                                <p class="change_link">
+									Already a member ?
+									<a href="#tologin" class="to_register"> Go and log in </a>
+								</p>
+
+
+                            </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+<script src="{% static 'codrops/adpacks/demoad.js' %}"></script>
+    </body>
+
+<!-- Mirrored from tympanus.net/Tutorials/LoginRegistrationForm/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 08 Feb 2018 10:07:26 GMT -->
+</html>

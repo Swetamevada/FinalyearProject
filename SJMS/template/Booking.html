@@ -1,0 +1,62 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div class="panel-heading">
+     Booking table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Booking_status</th>
+            <th>Amount</th>
+            <th>Payment_status</th>
+            <th data-breakpoints="xs">Package_id</th>
+            <th data-breakpoints="xs">User</th>
+            <th data-breakpoints="xs">Photographer</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for bk in booking %}
+          <tr data-expanded="true">
+            <td>{{bk.b_id}}</td>
+            <td>{{bk.b_date}}</td>
+            <td>{{bk.b_desc}}</td>
+            <td>{{bk.b_status}}</td>
+            <td>{{bk.b_amount}}</td>
+            <td>{{bk.payment_status}}</td>
+            <td>{{bk.pk_id.pk_name}}</td>
+            <td>{{bk.user_id.user_name}}</td>
+            <td>{{bk.p_id.p_name}}</td>
+               </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

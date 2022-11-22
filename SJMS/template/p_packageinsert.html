@@ -1,0 +1,52 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+	<div class="form-w3layouts">
+        <!-- page start-->
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12">
+			<!---728x90--->
+
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Photographer Package Forms
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                                <form role="form" method="post" action="/ppackage">
+                                {% csrf_token %}
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control" name="p_pk_name" placeholder="Enter name" value="{{pks.p_pk_name}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Description</label>
+                                    <input type="text" class="form-control" name="p_pk_desc" placeholder="Enter name" value="{{pks.p_pk_desc}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Amount</label>
+                                    <input type="text" class="form-control" name="p_pk_amount" placeholder="Enter name" value="{{pks.p_pk_amount}}">
+                                </div>
+
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Duration</label>
+                                    <input type="text" class="form-control" name="p_pk_duration" placeholder="Enter name" value="{{pks.p_pk_duration}}">
+                                </div>
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </form>
+                            </div>
+
+                        </div>
+                    </section>
+
+            </div>
+
+ {% endblock %}

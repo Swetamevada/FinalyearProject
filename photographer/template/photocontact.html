@@ -1,0 +1,54 @@
+{% extends 'photographerheader.html' %}
+
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div class="panel-heading">
+     Contact Us table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+              <th>Email</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Contact</th>
+            <th data-breakpoints="xs sm md" data-title="DOB">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for cns in cn %}
+          <tr data-expanded="true">
+            <td>{{cns.cn_id}}</td>
+            <td>{{cns.cn_name}}</td>
+            <td>{{cns.cn_email}}</td>
+            <td>{{cns.cn_phone}}</td>
+            <td>{{cns.cn_desc}}</td>
+          </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}

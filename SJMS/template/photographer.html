@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<div class="table-agile-info">
+ <div class="panel panel-default">
+ <!---728x90--->
+
+    <div class="panel-heading">
+     Photographer table
+    </div>
+    <div>
+
+      <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+          "enabled": true
+        },
+        "filtering": {
+          "enabled": true
+        },
+        "sorting": {
+          "enabled": true
+        }}'>
+
+        <thead>
+          <tr>
+            <th data-breakpoints="xs">ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Description</th>
+              <th>Amount</th>
+              <th>c_id</th>
+            <th data-breakpoints="xs">Package_id</th>
+            <th data-breakpoints="xs">Area_id</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for photos in photo %}
+          <tr data-expanded="true">
+            <td>{{photos.p_id}}</td>
+            <td>{{photos.p_name}}</td>
+            <td><img src="{% static 'img/' %}{{photos.p_image}}" height="100" width="100"/></td>
+            <td>{{photos.p_contact}}</td>
+            <td>{{photos.p_email}}</td>
+            <td>{{photos.p_address}}</td>
+            <td>{{photos.p_desc | wordwrap:30 | linebreaksbr}}</td>
+              <td>{{photos.p_amt}}</td>
+              <td>{{photos.c_id.c_name}}</td>
+            <td>{{photos.p_pk_id.p_pk_name}}</td>
+            <td>{{photos.area_id.area_name}}</td>
+            <td>{{photos.pay_status}}</td>
+               </tr>
+        {% endfor %}
+
+
+        </tbody>
+      </table>
+    </div>
+	<!---728x90--->
+  </div>
+</div>
+{% endblock %}
